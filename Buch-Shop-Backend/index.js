@@ -53,7 +53,7 @@ async function findRecommendation(title, author, categories) {
     .db(Database)
     .collection('books')
     .find({
-      categories: new RegExp(categories.join('|'), 'i'), // Verwende "|" für ODER-Verknüpfung der Kategorien
+      categories: new RegExp(categories.join('|'), 'i'),
       title: { $not: new RegExp('^' + title + '$', 'i') },
     })
     .toArray()
@@ -70,7 +70,7 @@ async function findRecommendation(title, author, categories) {
     .db(Database)
     .collection('books')
     .find({
-      categories: { $all: categoriesRegex }, // Überprüfe, ob alle Kategorien im Array vorhanden sind
+      categories: { $all: categoriesRegex }, 
       title: { $not: new RegExp('^' + title + '$', 'i') },
     })
     .toArray()
